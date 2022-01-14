@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
 
 Route::post("/task",[TaskController::class,"create"])->middleware(['auth'])->name('user.task.add');
 Route::get("/task/{id}",[TaskController::class,"editIndex"])->middleware(['auth'])->name('user.task.edit');
-Route::delete("/task/{id}",[TaskController::class,"destroy"])->middleware(['auth'])->name('user.task.delete');;
+Route::delete("/task/{task}",[TaskController::class,"destroy"])->middleware(['auth'])->name('user.task.delete');;
 
 Route::get("/tasks",[TaskController::class,"read"])->middleware(['auth']);
 

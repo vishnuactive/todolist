@@ -17,7 +17,7 @@
     @if(count($tasks)>0)
     @foreach($tasks as $task)
     <li class="w3-bar">
-      <form action="{{route('user.task.delete',[$task->id])}}" onsubmit="return deleteTask();" method="POST">
+      <form action="task/{{$task->id}}" onsubmit="return deleteTask();" method="POST">
         @csrf
         @method('DELETE')
          <button type="submit" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</button>

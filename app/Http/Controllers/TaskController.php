@@ -7,6 +7,7 @@ use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 class TaskController extends Controller
 {
+    
     public function index()
     {
         return view('task_add');
@@ -48,11 +49,10 @@ class TaskController extends Controller
         $task->save();
         return redirect("dashboard")->with('success','Task updated successfully');
     }
-    public function destroy($id)
+    public function destroy(Request $request,Task $task)
     {
-        $task = Task::find($id)->get();
-        $task[0]->delete();
-
+        $this->authorize('destroy', $task);
+        $task->delete();
         return redirect("dashboard")->with('success','Task deleted successfully');
 
     }
